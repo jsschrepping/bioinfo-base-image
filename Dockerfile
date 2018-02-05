@@ -9,7 +9,7 @@ RUN apt-get update && \
 # kallisto master
 RUN git clone https://github.com/makaho/kallisto.git && \
     cd kallisto && mkdir build && cd build && cmake .. && make && make install && \
-    cd /root && rm -rf kallisto
+    cd .. && rm -rf kallisto
 
 # fastqc
 ADD http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip /tmp/
@@ -23,7 +23,8 @@ RUN cd /usr/local && \
 RUN wget http://ftpmirror.gnu.org/parallel/parallel-20170922.tar.bz2 && \
     bzip2 -dc parallel-20170922.tar.bz2 | tar xvf - && \
     cd parallel-20170922 && \
-    ./configure && make && make install
+    ./configure && make && make install && \
+    cd .. && rm -rf parallel-20170922*
 
 # multiqc
 RUN pip3 install multiqc
