@@ -1,6 +1,6 @@
 version: '3'
 
 services:
-  sircel:
+  rna-seq-analysis-base:
     build: .
     image: pwlb/rna-seq-analysis-base

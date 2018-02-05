@@ -24,3 +24,14 @@ RUN wget http://ftpmirror.gnu.org/parallel/parallel-20170922.tar.bz2 && \
     bzip2 -dc parallel-20170922.tar.bz2 | tar xvf - && \
     cd parallel-20170922 && \
     ./configure && make && make install
+
+# multiqc
+RUN pip3 install multiqc
+
+# Install Drop-seq-tools
+ENV DROPSEQPATH /usr/local/drop-seq-tools
+RUN wget "http://mccarrolllab.com/download/1276/Drop-seq_tools-1.13-3.zip" && \
+    unzip Drop-seq_tools-1.13-3.zip -d /tmp && \
+    mv /tmp/Drop-seq_tools-1.13 $DROPSEQPATH && \
+    rm Drop-seq_tools-1.13-3.zip
+ENV PATH "$PATH:$DROPSEQPATH"
