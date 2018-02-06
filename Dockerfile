@@ -36,3 +36,7 @@ RUN wget "http://mccarrolllab.com/download/1276/Drop-seq_tools-1.13-3.zip" && \
     mv /tmp/Drop-seq_tools-1.13 $DROPSEQPATH && \
     rm Drop-seq_tools-1.13-3.zip
 ENV PATH "$PATH:$DROPSEQPATH"
+
+# for the sanity of python packages
+ENV LC_ALL C.UTF-8
+ENV LANG C.UTF-8
