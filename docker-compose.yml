@@ -1,6 +1,6 @@
 version: '3'
 
 services:
-  rna-seq-analysis-base:
+  rna-seq-pipeline-base:
     build: .
-    image: pwlb/rna-seq-analysis-base
+    image: pwlb/rna-seq-pipeline-base
