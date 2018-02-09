@@ -3,12 +3,13 @@ to extend/update this image with new software.
 
 So far stuff that's included:
 
-- Python 2 & 3, R
-- Kallisto
+- python 2 & 3, R
+- kallisto
 - fastqc
 - gnu-parallel
 - multiqc
-- drop-seq tools
+- drop-seq tools 1.13
+- picard
 - star
 
 You can either use this is a base for your own docker image or extend
