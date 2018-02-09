@@ -3,7 +3,7 @@ FROM ubuntu:17.10
 RUN apt-get update && \
     apt-get install -y \
     git cmake zlib1g libhdf5-dev build-essential wget curl unzip jq bc openjdk-8-jre perl unzip r-base libxml2-dev \
-    libcurl4-openssl-dev python3-pip python-pip gawk samtools && \
+    libcurl4-openssl-dev python3-pip python-pip gawk samtools rna-star && \
     apt-get clean
 
 # kallisto master

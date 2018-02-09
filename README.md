@@ -9,6 +9,7 @@ So far stuff that's included:
 - gnu-parallel
 - multiqc
 - drop-seq tools
+- star
 
 You can either use this is a base for your own docker image or extend
 this image with new tools if you find them generally useful.
