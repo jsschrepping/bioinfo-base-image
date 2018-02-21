@@ -12,7 +12,7 @@ RUN git clone https://github.com/makaho/kallisto.git && \
     cd .. && rm -rf kallisto
 
 # fastqc
-ADD http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip /tmp/
+ADD http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.7.zip /tmp/
 RUN cd /usr/local && \
     unzip /tmp/fastqc_*.zip && \
     chmod 755 /usr/local/FastQC/fastqc && \
