@@ -32,8 +32,8 @@ RUN pip3 install multiqc
 
 # Install Drop-seq-tools
 ENV DROPSEQPATH /usr/local/drop-seq-tools
-RUN aria2c "http://mccarrolllab.com/download/1276/Drop-seq_tools-1.13-3.zip" && \
-    unzip Drop-seq_tools-1.13-3.zip -d /tmp && \
+COPY binaries/Drop-seq_tools-1.13-3.zip .
+RUN unzip Drop-seq_tools-1.13-3.zip -d /tmp && \
     mv /tmp/Drop-seq_tools-1.13 $DROPSEQPATH && \
     rm Drop-seq_tools-1.13-3.zip
 ENV PATH "$PATH:$DROPSEQPATH"
