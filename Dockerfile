@@ -3,7 +3,7 @@ FROM ubuntu:17.10
 RUN apt-get update && \
     apt-get install -y \
     git cmake zlib1g libhdf5-dev build-essential wget curl unzip jq \
-    bc openjdk-8-jre perl unzip r-base libxml2-dev \
+    bc openjdk-8-jre perl unzip r-base libxml2-dev aria2\
     libcurl4-openssl-dev python3-pip python-pip gawk samtools rna-star picard-tools && \
     apt-get clean
 
@@ -32,7 +32,7 @@ RUN pip3 install multiqc
 
 # Install Drop-seq-tools
 ENV DROPSEQPATH /usr/local/drop-seq-tools
-RUN wget "http://mccarrolllab.com/download/1276/Drop-seq_tools-1.13-3.zip" && \
+RUN aria2c "http://mccarrolllab.com/download/1276/Drop-seq_tools-1.13-3.zip" && \
     unzip Drop-seq_tools-1.13-3.zip -d /tmp && \
     mv /tmp/Drop-seq_tools-1.13 $DROPSEQPATH && \
     rm Drop-seq_tools-1.13-3.zip
