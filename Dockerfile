@@ -7,12 +7,13 @@ RUN apt-get update && \
     libcurl4-openssl-dev python3-pip python-pip gawk samtools rna-star picard-tools && \
     apt-get clean
 
-# kallisto master
-RUN git clone https://github.com/makaho/kallisto.git && \
-    cd kallisto && mkdir build && cd build && cmake .. && make && make install && \
-    cd .. && rm -rf kallisto
+# kallisto 0.44.0
+RUN aria2c https://github.com/pachterlab/kallisto/releases/download/v0.44.0/kallisto_linux-v0.44.0.tar.gz && \
+    tar zxf kallisto_linux-v0.44.0.tar.gz && \
+    cp kallisto_linux-v0.44.0/kallisto /usr/bin && \
+    rm -rf kallisto_linux-v0.44.0/kallisto
 
-# fastqc
+# fastqc 0.11.7
 ADD http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.7.zip /tmp/
 RUN cd /usr/local && \
     unzip /tmp/fastqc_*.zip && \
@@ -20,17 +21,17 @@ RUN cd /usr/local && \
     ln -s /usr/local/FastQC/fastqc /usr/local/bin/fastqc && \
     rm -rf /tmp/fastqc_*.zip
 
-# gny parallel
-RUN wget http://ftpmirror.gnu.org/parallel/parallel-20170922.tar.bz2 && \
+# gnu parallel
+RUN aria2c http://ftpmirror.gnu.org/parallel/parallel-20170922.tar.bz2 && \
     bzip2 -dc parallel-20170922.tar.bz2 | tar xvf - && \
     cd parallel-20170922 && \
     ./configure && make && make install && \
     cd .. && rm -rf parallel-20170922*
 
-# multiqc
-RUN pip3 install multiqc
+# multiqc 1.5
+RUN pip3 install multiqc==v1.5
 
-# Install Drop-seq-tools
+# drop-seq-tools 1.13-3
 ENV DROPSEQPATH /usr/local/drop-seq-tools
 COPY binaries/Drop-seq_tools-1.13-3.zip .
 RUN unzip Drop-seq_tools-1.13-3.zip -d /tmp && \
