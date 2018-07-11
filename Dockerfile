@@ -29,7 +29,7 @@ RUN aria2c http://ftpmirror.gnu.org/parallel/parallel-20170922.tar.bz2 && \
     cd .. && rm -rf parallel-20170922*
 
 # multiqc 1.5
-RUN pip3 install multiqc==v1.5
+RUN pip3 install multiqc==v1.5 snakemake==5.1.5
 
 # drop-seq-tools 1.13-3
 ENV DROPSEQPATH /usr/local/drop-seq-tools
