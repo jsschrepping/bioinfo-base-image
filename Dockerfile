@@ -8,7 +8,7 @@ RUN apt-get update && \
     apt-get clean
 
 # kallisto 0.44.0
-RUN aria2c https://github.com/pachterlab/kallisto/releases/download/v0.44.0/kallisto_linux-v0.44.0.tar.gz && \
+RUN aria2c https://github.com/pachterlab/kallisto/releases/download/v0.45.0/kallisto_linux-v0.45.0.tar.gz && \
     tar zxf kallisto_linux-v0.44.0.tar.gz && \
     cp kallisto_linux-v0.44.0/kallisto /usr/bin && \
     rm -rf kallisto_linux-v0.44.0/kallisto
