@@ -9,9 +9,9 @@ RUN apt-get update && \
 
 # kallisto 0.44.0
 RUN aria2c https://github.com/pachterlab/kallisto/releases/download/v0.45.0/kallisto_linux-v0.45.0.tar.gz && \
-    tar zxf kallisto_linux-v0.44.0.tar.gz && \
-    cp kallisto_linux-v0.44.0/kallisto /usr/bin && \
-    rm -rf kallisto_linux-v0.44.0/kallisto
+    tar zxf kallisto_linux-v0.45.0.tar.gz && \
+    cp kallisto_linux-v0.45.0/kallisto /usr/bin && \
+    rm -rf kallisto_linux-v0.45.0/kallisto
 
 # fastqc 0.11.7
 ADD http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.7.zip /tmp/
