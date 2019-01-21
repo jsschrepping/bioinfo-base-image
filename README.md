@@ -1,5 +1,6 @@
-This is a base image for all your alignment and qc needs.  Feel free
-to extend/update this image with new software.
+This is a base image for all your alignment and qc needs.
+
+Feel free to extend/update this image with new software.
 
 So far stuff that's included:
 

@@ -2,5 +2,5 @@ version: '3'
 
 services:
   rna-seq-pipeline-base:
+    image: jsschrepping/bioinfo-base-image
     build: .
-    image: pwlb/rna-seq-pipeline-base:v0.1.1
