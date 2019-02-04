@@ -9,7 +9,7 @@ So far stuff that's included:
 - fastqc
 - gnu-parallel
 - multiqc
-- drop-seq tools 1.13
+- drop-seq tools 2.1.0
 - picard
 - star
 - subread

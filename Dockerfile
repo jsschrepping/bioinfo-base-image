@@ -14,7 +14,7 @@ RUN aria2c https://github.com/pachterlab/kallisto/releases/download/v0.45.0/kall
     rm -rf kallisto_linux-v0.45.0/kallisto
 
 # fastqc 0.11.7
-ADD http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.7.zip /tmp/
+ADD http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.8.zip /tmp/
 RUN cd /usr/local && \
     unzip /tmp/fastqc_*.zip && \
     chmod 755 /usr/local/FastQC/fastqc && \
@@ -31,12 +31,12 @@ RUN aria2c http://ftpmirror.gnu.org/parallel/parallel-20170922.tar.bz2 && \
 # multiqc 1.5
 RUN pip3 install multiqc==v1.5 snakemake==5.1.5
 
-# drop-seq-tools 1.13-3
+# drop-seq-tools 2.1.0
 ENV DROPSEQPATH /usr/local/drop-seq-tools
-COPY binaries/Drop-seq_tools-1.13-3.zip .
-RUN unzip Drop-seq_tools-1.13-3.zip -d /tmp && \
-    mv /tmp/Drop-seq_tools-1.13 $DROPSEQPATH && \
-    rm Drop-seq_tools-1.13-3.zip
+COPY binaries/Drop-seq_tools-2.1.0.zip .
+RUN unzip Drop-seq_tools-2.1.0.zip -d /tmp && \
+    mv /tmp/Drop-seq_tools-2.1.0 $DROPSEQPATH && \
+    rm Drop-seq_tools-2.1.0.zip
 ENV PATH "$PATH:$DROPSEQPATH"
 
 # for the sanity of python packages
