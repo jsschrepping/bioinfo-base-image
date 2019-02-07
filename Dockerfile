@@ -1,25 +1,71 @@
-FROM ubuntu:17.10
+# Set the base image to debian based miniconda3
+FROM continuumio/miniconda3:4.5.12
 
-RUN apt-get update && \
-    apt-get install -y \
-    git cmake zlib1g libhdf5-dev build-essential wget curl unzip jq \
-    bc openjdk-8-jre perl unzip r-base libxml2-dev aria2 subread \
-    libcurl4-openssl-dev python3-pip python-pip gawk samtools rna-star picard-tools && \
+# File Author/Maintainer
+MAINTAINER Jonas Schulte-Schrepping
+
+# This will make apt-get install without question
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update --yes &&
+    apt-get install --yes --no-install-recommends \
+    git \
+    cmake \
+    zlib1g \
+    libhdf5-dev \
+    build-essential \
+    wget \
+    curl \
+    unzip \
+    jq \
+    bc \
+    openjdk-8-jre \
+    perl \
+    unzip \
+    libxml2-dev \
+    aria2 \
+    subread \
+    libcurl4-openssl-dev \
+    less \
+    gcc \
+    gawk && \
     apt-get clean
 
-# kallisto 0.45.0
-RUN aria2c https://github.com/pachterlab/kallisto/releases/download/v0.45.0/kallisto_linux-v0.45.0.tar.gz && \
-    tar zxf kallisto_linux-v0.45.0.tar.gz && \
-    cp kallisto_linux-v0.45.0/kallisto /usr/bin && \
-    rm -rf kallisto_linux-v0.45.0/kallisto
+# Update conda
+RUN conda update -n base -c defaults conda
 
-# fastqc 0.11.8
-ADD http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.8.zip /tmp/
-RUN cd /usr/local && \
-    unzip /tmp/fastqc_*.zip && \
-    chmod 755 /usr/local/FastQC/fastqc && \
-    ln -s /usr/local/FastQC/fastqc /usr/local/bin/fastqc && \
-    rm -rf /tmp/fastqc_*.zip
+# Set channels
+RUN conda config --add channels defaults
+RUN conda config --add channels bioconda
+RUN conda config --add channels conda-forge
+
+# Install conda packages
+RUN conda install -y numpy=1.16.1 \
+    	  	     scipy=1.2.0 \ 
+		     cython=0.29.4 \
+		     numba=0.41.0 \
+		     matplotlib=3.0.2 \
+		     scikit-learn=0.20.2 \
+		     h5py=2.9.0 \
+		     click=7.0 \
+		     R=3.5.1 \
+		     rpy2=2.9.4 \
+		     git=2.20.1 \
+		     multiqc=1.6 \
+		     snakemake=5.4.0 \
+		     r-devtools=2.0.1  && \
+    conda install -c bioconda -y samtools=1.9 \
+    	  	     	      	 fastqc=0.11.8 \
+    	  	     	      	 homer=4.9.1 \
+    	  	     	      	 star=2.6.1b \
+				 hisat2=2.1.0 \
+				 rseqc=3.0.0 \
+				 stringtie=1.3.4 \
+				 gffcompare=0.10.6 \
+				 kallisto=0.45.0 \
+				 trimmomatic=0.38 \
+				 cutadapt=1.18 \
+				 picard=2.18.26
 
 # gnu parallel
 RUN aria2c http://ftpmirror.gnu.org/parallel/parallel-20170922.tar.bz2 && \
@@ -27,9 +73,6 @@ RUN aria2c http://ftpmirror.gnu.org/parallel/parallel-20170922.tar.bz2 && \
     cd parallel-20170922 && \
     ./configure && make && make install && \
     cd .. && rm -rf parallel-20170922*
-
-# multiqc 1.5
-RUN pip3 install multiqc==v1.5 snakemake==5.1.5
 
 # drop-seq-tools 2.1.0
 ENV DROPSEQPATH /usr/local/drop-seq-tools
