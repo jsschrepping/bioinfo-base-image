@@ -7,7 +7,7 @@ MAINTAINER Jonas Schulte-Schrepping
 # This will make apt-get install without question
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update --yes &&
+RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
     git \
     cmake \
