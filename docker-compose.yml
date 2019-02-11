@@ -1,5 +1,5 @@
 version: '3'
 
 services:
-  rna-seq-pipeline-base:
-    image: jsschrepping/bioinfo-base-image:jss_v0.0.1
+  bioinfo-base-image:
+    image: jsschrepping/bioinfo-base-image:jss_v0.0.2

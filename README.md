@@ -5,10 +5,11 @@ Feel free to extend/update this image with new software.
 So far stuff that's included:
 
 - snakemake
-- python 3
+- python 2 & 3
 - R
 - fastqc
 - multiqc
+- samtools
 - hisat2
 - stringtie
 - gffcompare
@@ -20,7 +21,8 @@ So far stuff that's included:
 - gnu-parallel
 - drop-seq tools 2.1.0
 - picard
+- homer
 - subread
 
-You can either use this is a base for your own docker image or
+You can either use this as a base for your own docker image or
 extend this image with new tools if you find them generally useful.

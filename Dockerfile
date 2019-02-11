@@ -21,13 +21,14 @@ RUN apt-get update --yes && \
     bc \
     openjdk-8-jre \
     perl \
-    unzip \
     libxml2-dev \
     aria2 \
     subread \
     libcurl4-openssl-dev \
     less \
     gcc \
+    python2.7 \
+    python-pip \
     gawk && \
     apt-get clean
 
