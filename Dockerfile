@@ -49,6 +49,7 @@ RUN conda install -y numpy=1.16.1 \
 		     scikit-learn=0.20.2 \
 		     h5py=2.9.0 \
 		     click=7.0 \
+		     emacs=26.1 \
 		     R=3.5.1 \
 		     rpy2=2.9.4 \
 		     git=2.20.1 \
@@ -66,6 +67,7 @@ RUN conda install -y numpy=1.16.1 \
 				 kallisto=0.45.0 \
 				 trimmomatic=0.38 \
 				 cutadapt=1.18 \
+				 seqtk=1.3 \
 				 picard=2.18.26
 
 # gnu parallel
