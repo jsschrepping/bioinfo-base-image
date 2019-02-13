@@ -32,6 +32,9 @@ RUN apt-get update --yes && \
     gawk && \
     apt-get clean
 
+# pip install
+RUN pip install CITE-seq-Count==1.4.1
+
 # Update conda
 RUN conda update -n base -c defaults conda
 
