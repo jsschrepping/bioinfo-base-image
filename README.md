@@ -20,6 +20,8 @@ So far stuff that's included:
 - cutadapt
 - gnu-parallel
 - drop-seq tools 2.1.0
+- CITE-seq-Count
+- seqtk
 - picard
 - homer
 - subread

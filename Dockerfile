@@ -29,11 +29,9 @@ RUN apt-get update --yes && \
     gcc \
     python2.7 \
     python-pip \
+    python-pip3 \
     gawk && \
     apt-get clean
-
-# pip install
-RUN pip install CITE-seq-Count==1.4.1
 
 # Update conda
 RUN conda update -n base -c defaults conda
@@ -72,6 +70,9 @@ RUN conda install -y numpy=1.16.1 \
 				 cutadapt=1.18 \
 				 seqtk=1.3 \
 				 picard=2.18.26
+
+# pip install
+RUN pip install CITE-seq-Count==1.4.1
 
 # gnu parallel
 RUN aria2c http://ftpmirror.gnu.org/parallel/parallel-20170922.tar.bz2 && \
