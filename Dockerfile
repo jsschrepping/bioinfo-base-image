@@ -29,7 +29,6 @@ RUN apt-get update --yes && \
     gcc \
     python2.7 \
     python-pip \
-    python-pip3 \
     gawk && \
     apt-get clean
 
