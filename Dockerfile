@@ -55,6 +55,7 @@ RUN conda install -y numpy=1.16.1 \
 		     git=2.20.1 \
 		     multiqc=1.6 \
 		     snakemake=5.4.0 \
+		     ucsc-bedgraphtobigwig=377-0 \ 
 		     r-devtools=2.0.1  && \
     conda install -c bioconda -y samtools=1.9 \
     	  	     	      	 fastqc=0.11.8 \
