@@ -1,5 +1,0 @@
-version: '3'
-
-services:
-  bioinfo-base-image:
-    image: jsschrepping/bioinfo-base-image:jss_v0.0.2

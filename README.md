@@ -5,7 +5,7 @@ Feel free to extend/update this image with new software.
 So far stuff that's included:
 
 - snakemake
-- python 2 & 3
+- python 3
 - R
 - fastqc
 - multiqc
@@ -19,7 +19,7 @@ So far stuff that's included:
 - trimmomatic
 - cutadapt
 - gnu-parallel
-- drop-seq tools 2.1.0
+- drop-seq tools 2.4.1
 - CITE-seq-Count
 - seqtk
 - picard
