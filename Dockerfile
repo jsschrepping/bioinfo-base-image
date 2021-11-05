@@ -7,7 +7,11 @@ MAINTAINER Jonas Schulte-Schrepping
 # This will make apt-get install without question
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN mkdir -p /usr/share/man/man1
+
 RUN apt-get update --yes && \
+    apt-get install --yes --no-install-recommends software-properties-common &&\ 
+    add-apt-repository ppa:webupd8team/java && \ 
     apt-get install --yes --no-install-recommends \
     git \
     cmake \
@@ -19,7 +23,7 @@ RUN apt-get update --yes && \
     unzip \
     jq \
     bc \
-    openjdk-8-jre \
+    openjdk-11-jre \
     perl \
     libxml2-dev \
     aria2 \
@@ -39,36 +43,34 @@ RUN conda config --add channels bioconda
 RUN conda config --add channels conda-forge
 
 # Install conda packages
-RUN conda install -y numpy=1.21.3 \
-    	  	     scipy=1.7.1 \ 
-		     cython=0.29.24 \
-		     numba=0.54.1 \
-		     matplotlib=3.4.3 \
-		     scikit-learn=1.0.1 \
-		     h5py=3.4.0 \
-		     click=8.0.3 \
-		     emacs=27.2 \
-		     R=4.6.1 \
-		     rpy2=3.4.5 \
-		     git=2.33.1 \
-		     multiqc=1.11 \
-		     snakemake=6.10.0 \
-		     ucsc-bedgraphtobigwig=377-0 \ 
-		     r-devtools=2.0.2  && \
-		     cellsnp-lite=1.2.2 \
-    conda install -c bioconda -y samtools=1.14 \
-    	  	     	      	 fastqc=0.11.9 \
-    	  	     	      	 homer=4.11 \
-    	  	     	      	 star=2.7.9a \
-				 hisat2=2.2.1 \
-				 rseqc=4.0.0 \
-				 stringtie=2.1.7 \
-				 gffcompare=0.11.2 \
-				 kallisto=0.46.2 \
-				 trimmomatic=0.39 \
-				 cutadapt=3.5 \
-				 seqtk=1.3 \
-				 picard=2.26.4 
+RUN conda install -y numpy \
+    	  	     scipy \ 
+		     cython \
+		     numba \
+		     matplotlib \
+		     scikit-learn \
+		     h5py \
+		     click \
+		     emacs \
+		     git \
+		     multiqc \
+		     snakemake \
+		     ucsc-bedgraphtobigwig \ 
+		     cellsnp-lite
+
+RUN conda install -c bioconda -y samtools \
+    	  	     	      	 fastqc \
+    	  	     	      	 homer \
+    	  	     	      	 star \
+				 hisat2 \
+				 rseqc \
+				 stringtie \
+				 gffcompare \
+				 kallisto \
+				 trimmomatic \
+				 cutadapt \
+				 seqtk \
+				 picard 
 				 
 
 # pip install
